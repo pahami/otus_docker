@@ -23,6 +23,7 @@
 
 Команды для выполнения ДЗ
 <details>
+ 
 - docker ps - просмотреть список запущенных контейнеров
 - docker ps -a - просмотреть список всех контейнеров
 - docker run -d -p port:port container_name - запуск нового контейнера с пробросом портов
@@ -32,11 +33,13 @@
 - docker build -t dockerhub_login/reponame:ver - билд нового образа
 - docker push/pull - отправка/получение образа из docker-registry
 - docker exec -it container_name bash - выполнить команду внутри оболочки контейнера (в данном примере мы выполняем команду “bash” внутри контейнера и попадаем в оболочку, внутрь контейнера)
+
 </details>
 
 ```
 Для выполнения задания подготовлен Vagrantfile с предварительными настройками Docker Container.
 ```
+
 #### Задание №1-2  Установите Docker и Docker Compose на хост машину
 
 Настраиваем репозиторий Docker:
@@ -110,12 +113,15 @@ echo 'Hello world. Otus docker test' > /opt/nginxotus/index.html
 Проверяем: ```docker ps -a```
 
 <details>
+ 
 <summary> Результат </summary>
+
 ```
 CONTAINER ID   IMAGE         COMMAND                  CREATED              STATUS                          PORTS                  NAMES
 c0a7b886067e   hello-world   "/hello"                 About a minute ago   Exited (0) About a minute ago                          elastic_goldstine
 3bd3c53e39d4   nginxotus     "/docker-entrypoint.…"   22 hours ago         Exited (255) 6 minutes ago      0.0.0.0:8080->80/tcp   webserver
 ```
+
 </details>
 
 Запускаем контейнет из образа
@@ -125,15 +131,20 @@ c0a7b886067e   hello-world   "/hello"                 About a minute ago   Exite
 Проверяем:
 
 <details>
+ 
 <summary> docker ps -a </summary>
+
 ```
 CONTAINER ID   IMAGE       COMMAND                  CREATED          STATUS          PORTS                  NAMES
 3bd3c53e39d4   nginxotus   "/docker-entrypoint.…"   12 seconds ago   Up 11 seconds   0.0.0.0:8080->80/tcp   nginxotus
 ```
+
 <summary> curl 127.0.0.1:8080 </summary>
+
 ```
 Hello world. Otus docker test
 ```
+
 </details>
 
 #### Задание №4 Определите разницу между контейнером и образом. Вывод опишите в домашнем задании.
@@ -173,8 +184,11 @@ Docker контейнер - это экземпляр запущенного Doc
 
 ```docker push pahami/nginxotus:latest```
 
-<detils>
+<details>
+ 
 <summary> Резуьтат </summary>
+
+```
 The push refers to repository [docker.io/pahami/nginxotus]
 d94cc1d56f1b: Pushed 
 72120687062c: Mounted from library/nginx 
@@ -186,6 +200,8 @@ ef050c9a03b5: Mounted from library/nginx
 1024e8977b69: Mounted from library/nginx 
 a0904247e36a: Mounted from library/nginx 
 latest: digest: sha256:f06c47e6db507966e7900e2214afd41f8b10eff0e0e6b2eb811f74b76fd98c84 size: 2196
+```
+
 </details>
 
 Ссылка на загруженный образ в Docker HUB
